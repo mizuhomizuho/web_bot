@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Parser</title>
+    <link href="{% static 'app_main/css/style.css' %}" type="text/css"  rel="stylesheet" />
+</head>
+<body>
+    | <a href="/">Home</a>
+    | <a href="/admin/">Admin</a>
+    | <a href="/clear-cache/">Clear cache</a>
+    | <a href="/catalog/">Catalog</a>
+    | <a href="/catalog/s4good/">Good {{ good_count }}</a>
+    <hr>
+    {% block content %} {% endblock %}
+    <script src="{% static 'app_main/js/script.js' %}"></script>
+</body>
+</html>

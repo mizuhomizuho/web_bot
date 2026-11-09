@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    {% if pager %}
+
+        <div class="nav">
+            {% if pager.paginator.num_pages > 1 %}
+                {% if pager.has_previous %}
+                    <a href="?page={{ pager.previous_page_number }}">&lt;</a>
+                {% endif %}
+                {% for item in pager.paginator.page_range %}
+                    {% if pager.number == item %}
+                        <a href="?page={{ item }}" style="color: red">{{ item }}</a>
+                    {% elif item >= pager.number|add:-8 and item <= pager.number|add:8 %}
+                        <a href="?page={{ item }}">{{ item }}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if pager.has_next %}
+                    <a href="?page={{ pager.next_page_number }}">&gt;</a>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        <div style="display: flex;flex-wrap: wrap;gap: 25px;">
+            {% for item in pager %}
+                <table class="js-s4__el-box" data-id="{{ item.pk }}">
+                    <tr>
+                        <td rowspan="3">
+                            <a href="https://vk.com/{{ item.nick }}/" target="_blank">
+                                <img src="{{ item.ava }}" style="width: 108px;height: 108px;position: relative;top: 2px;">
+                            </a>
+                        </td>
+                        <td colspan="2">
+                            <input type="button" class="js-s4__res-btn" data-act="yes" value="Да" style="width: 100%">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            {{ item.age }}
+                        </td>
+                        <td>
+                            <input type="button" class="js-s4__res-btn" data-act="no" value="Нет" style="width: 100%">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="button" class="js-s4__res-btn" data-act="mb" value="Наверное">
+                        </td>
+                    </tr>
+                </table>
+            {% endfor %}
+        </div>
+
+        <div class="nav">
+            {% if pager.paginator.num_pages > 1 %}
+                {% if pager.has_previous %}
+                    <a href="?page={{ pager.previous_page_number }}">&lt;</a>
+                {% endif %}
+                {% for item in pager.paginator.page_range %}
+                    {% if pager.number == item %}
+                        <a href="?page={{ item }}" style="color: red">{{ item }}</a>
+                    {% elif item >= pager.number|add:-8 and item <= pager.number|add:8 %}
+                        <a href="?page={{ item }}">{{ item }}</a>
+                    {% endif %}
+                {% endfor %}
+                {% if pager.has_next %}
+                    <a href="?page={{ pager.next_page_number }}">&gt;</a>
+                {% endif %}
+            {% endif %}
+        </div>
+
+    {% endif %}
+
+{% endblock %}

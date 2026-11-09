@@ -1,0 +1,14 @@
+<ul>
+    {% for key, item in tree.items %}
+        <li>
+            <a href="{{ item.el.get_absolute_url }}"
+                {% if section.pk == item.el.pk %}
+                    style="color: #ff7f7f"
+                {% endif %}
+            >[{{ item.el.pk }}] {{ item.el.name }}</a>
+            {% if item.children %}
+                {% include 'app_catalog/inc/tree.html' with tree=item.children %}
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

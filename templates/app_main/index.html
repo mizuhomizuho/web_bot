@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Parser</h1>
+<hr>
+<pre>
+cd ~\PycharmProjects\Parser && .venv\Scripts\activate && py Parser\manage.py runserver 888
+</pre>
+<hr>
+<pre>
+cd ~\PycharmProjects\Parser && .venv\Scripts\activate && py parser/step3/run.py
+</pre>
+<hr>
+<pre>
+& "C:\Program Files\MySQL\MySQL Server 8.4\bin\mysqldump.exe" -h localhost -P 3306 -u Parser -pParser Parser | & "C:\Program Files\7-Zip\7z.exe" a -si ./dump.sql.7z
+</pre>
+<hr>
+<pre>
+{{ headers }}
+</pre>
+<hr>
+{% endblock %}
